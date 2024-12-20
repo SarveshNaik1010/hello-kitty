@@ -6,9 +6,12 @@ import Login, {
   action as userLoginAction,
 } from "./feature/authentication/Login";
 import AppLayout, { action as newPostAction } from "./ui/AppLayout";
-import Profile from "./feature/users/Profile";
+import UserProfile, {
+  loader as getUserLoader,
+} from "./feature/users/UserProfile";
+import { action as updateUserProfileAction } from "./feature/users/Profile";
 import Home from "./feature/posts/Home";
-import { loader as renderPostLoader } from "./feature/posts/DisplayPosts";
+import { loader as renderPostLoader } from "./feature/posts/Home";
 
 const router = createBrowserRouter([
   {
@@ -34,7 +37,12 @@ const router = createBrowserRouter([
         action: newPostAction,
         loader: renderPostLoader,
       },
-      { path: "/me", element: <Profile /> },
+      {
+        path: "/profile/:id",
+        element: <UserProfile />,
+        loader: getUserLoader,
+        action: updateUserProfileAction,
+      },
     ],
   },
 ]);

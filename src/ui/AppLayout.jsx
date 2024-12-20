@@ -9,6 +9,8 @@ import { createPost } from "../services/apiPosts";
 
 function AppLayout() {
   const [isOpen, setIsOpen] = useState(false);
+  const user = useSelector((state) => state.user);
+  console.log(user);
 
   function handleIsOpen(payload) {
     setIsOpen(payload);
@@ -18,10 +20,12 @@ function AppLayout() {
     <div className="min-h-dvh flex justify-center items-center bg-pink-200 font-sans">
       <Outlet />
       {isOpen && <AddNewPost handleIsOpen={handleIsOpen} />}
-      <>
-        <BtnLogout />
-        <BtnAddNewPost onClick={() => handleIsOpen(true)} />
-      </>
+      {user.id && (
+        <>
+          <BtnLogout />
+          <BtnAddNewPost onClick={() => handleIsOpen(true)} />
+        </>
+      )}
     </div>
   );
 }

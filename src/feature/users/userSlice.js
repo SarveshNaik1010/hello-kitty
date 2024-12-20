@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { updateUser } from "../../services/apiUsers";
 
 const initialState = {
-  id: 1,
+  id: null,
   username: "",
   password: "",
   bio: "",

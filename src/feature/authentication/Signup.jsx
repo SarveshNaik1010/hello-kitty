@@ -74,5 +74,5 @@ export async function action({ request }) {
   const data = await createUser({ username, password });
   console.log(data);
   localStorage.setItem("user", JSON.stringify(data));
-  return redirect(`/me`);
+  return redirect(`/home`);
 }

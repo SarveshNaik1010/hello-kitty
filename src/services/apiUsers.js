@@ -37,6 +37,8 @@ export async function createUser(newUser) {
 }
 
 export async function updateUser(userId, updatedUser) {
+  console.log("sodngfodsdfng", updatedUser);
+
   const res = await fetch(
     `https://api-generator.retool.com/5dCPRX/users/${userId}`,
     {

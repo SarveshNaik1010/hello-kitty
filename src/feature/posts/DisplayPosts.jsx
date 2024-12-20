@@ -3,16 +3,15 @@ import { getAllPosts } from "../../services/apiPosts";
 import Post from "./Post";
 import { getAllUsers } from "../../services/apiUsers";
 
-function DisplayPosts() {
-  const { posts, users } = useLoaderData();
-  console.log(users);
+function DisplayPosts({ users, posts }) {
+  console.log("sdfsdf", users)
   return (
     <div className="w-fit flex flex-col justify-center items-center space-y-6">
       {posts.map((post) => (
         <Post
           post={post}
           key={post.id}
-          belongsToUser={users.find((user) => user.id === post.belongsTo)}
+          belongsToUser={users && users?.find((user) => user?.id === post.belongsTo)}
         />
       ))}
     </div>

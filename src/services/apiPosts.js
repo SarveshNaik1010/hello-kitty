@@ -1,3 +1,5 @@
+import { getUserFromId, updateUser } from "./apiUsers";
+
 const postSchema = {
   id: 1,
   belongsTo: 1,
@@ -11,6 +13,7 @@ const postSchema = {
 
 export async function createPost(newPost) {
   try {
+    // 1. Create new post
     const res = await fetch(`https://retoolapi.dev/qeg6Bc/posts`, {
       method: "POST",
       headers: {
@@ -19,6 +22,11 @@ export async function createPost(newPost) {
       body: JSON.stringify(newPost),
     });
     const data = await res.json();
+
+    // 2. Add the created post to belonging user
+    const user = await getUserFromId(data.belongsTo);
+    await updateUser(user.id, { posts: [...user.posts, data.id] });
+
     return data;
   } catch (error) {
     return error;

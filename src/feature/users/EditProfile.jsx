@@ -1,0 +1,70 @@
+import { Form } from "react-router-dom";
+import Button from "../../ui/Button";
+
+function EditProfile({user, setIsActive }) {
+  return (
+    <div>
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div className="bg-white rounded-lg shadow-lg p-6 md:p-8 w-full max-w-md relative">
+          {/* Close Button */}
+          <button
+            onClick={() => setIsActive(false)}
+            className="absolute top-2 right-2 text-gray-600 hover:text-gray-800"
+          >
+            &times;
+          </button>
+
+          {/* Overlay Content */}
+          <h2 className="text-2xl font-bold text-pink-600 mb-4 text-center">
+            Edit Profile
+          </h2>
+
+          <Form method="POST" className="space-y-4">
+            {/* Content Field */}
+            <div>
+              <label className="block text-pink-700 font-semibold mb-1">
+                Bio
+              </label>
+              <textarea
+                rows="4"
+                placeholder="Write your post here..."
+                name="bio"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
+              ></textarea>
+            </div>
+
+            {/* Image Field */}
+            <div>
+              <label className="block text-pink-700 font-semibold mb-1">
+                Profile Picture
+              </label>
+              <input
+                type="text"
+                name="dp"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
+              />
+            </div>
+
+            {/* Submit Button */}
+            <div className="flex justify-end">
+              <Button
+                type="secondary"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsActive(false);
+                }}
+              >
+                Cancel
+              </Button>
+              <Button type="primary" className="ml-2">
+                Post
+              </Button>
+            </div>
+          </Form>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default EditProfile;

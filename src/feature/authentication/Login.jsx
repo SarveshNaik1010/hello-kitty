@@ -57,7 +57,7 @@ export async function action({ request, params }) {
     const formData = Object.fromEntries(await request.formData());
     const user = await loginUser(formData.username, formData.password);
     store.dispatch(loginNewUser(user.user));
-    return redirect("/me");
+    return redirect("/home");
   } catch (error) {
     return error;
   }
