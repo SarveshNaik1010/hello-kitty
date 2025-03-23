@@ -87,12 +87,12 @@ function Login() {
         </div>
 
         {isIOS ? (
-          <Button type="primary">
-            <button onClick={handleInfo}>STEPS</button>
+          <Button type="primary" onClick={handleInfo}>
+            STEPS
           </Button>
         ) : (
-          <Button>
-            <button onClick={handleInstallClick}>INSTALL</button>
+          <Button type="primary" onClick={handleInstallClick}>
+            Install
           </Button>
         )}
 
