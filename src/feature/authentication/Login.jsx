@@ -34,7 +34,7 @@ function Login() {
 
   const handleInstallClick = (e) => {
     e.preventDefault();
-    console.log("1");
+    setMessage("1");
     if (deferredPrompt) {
       setMessage("2");
       deferredPrompt.prompt(); // Show the install prompt
