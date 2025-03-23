@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 function Login() {
   const [isIOS, setIsIOS] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [message, setMessage] = useState("");
   const [deferredPrompt, setDeferredPrompt] = useState(null);
 
   useEffect(() => {
@@ -33,10 +34,13 @@ function Login() {
 
   const handleInstallClick = (e) => {
     e.preventDefault();
-    console.log("somete");
+    console.log("1");
     if (deferredPrompt) {
+      setMessage("2");
       deferredPrompt.prompt(); // Show the install prompt
+      setMessage("3");
       deferredPrompt.userChoice.then((choiceResult) => {
+        setMessage("4");
         if (choiceResult.outcome === "accepted") {
           console.log("User accepted the install prompt");
         } else {
@@ -95,6 +99,7 @@ function Login() {
             Install
           </Button>
         )}
+        <p>{message}</p>
 
         {/* Submit Button */}
         <Button type="primary">Login</Button>
